@@ -5,14 +5,24 @@ export default function QuestionTimer({ timeout, onTimeout }) {
 
 	useEffect(() => {
 		console.log('SETTING TIMEOUT');
-		setTimeout(onTimeout, timeout);
+		 const timer = setTimeout(onTimeout, timeout);
+
+		 // Cleanup function
+		return () => {
+			clearTimeout(timer);
+		};
 	}, [onTimeout, timeout]);
 
 	useEffect(() => {
 		console.log('SETTING INTERVAL');
-		setInterval(() =>{
+		const interval = setInterval(() =>{
 			setRemainingTime(prevRemainingTime => prevRemainingTime - 100)
 		}, 100);
+
+		// Cleanup function
+		return () => {
+			clearInterval(interval);
+		};
 	}, []);
 	
 

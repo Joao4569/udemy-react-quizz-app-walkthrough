@@ -38,6 +38,7 @@ export default function Quiz() {
     <div id="quiz">
       <div id="question">
         <QuestionTimer
+          key={activeQuestionIndex} // When the key changes then the component is unmounted and remounted.
           timeout ={10000}
           onTimeout={handleSkipAnswer}
         />
