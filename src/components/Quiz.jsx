@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 
 import QUESTIONS from "../questions.js";
 import Question from "./Question.jsx";
-import quizCompleteImg from "../assets/quiz-complete.png";
+import Summary from "./Summary.jsx";
 
 export default function Quiz() {
   // manage the user's answers
@@ -32,15 +32,7 @@ export default function Quiz() {
 
   // render the quiz complete message
   if (quizIsComplete) {
-    return (
-      <div id="summary">
-        <img
-          src={quizCompleteImg}
-          alt="Trophy icon - All quiz questions completed"
-        />
-        <h2>Quiz Completed!</h2>
-      </div>
-    );
+    return <Summary userAnswers={userAnswers} />;
   }
 
   // render the quiz component with the current question
